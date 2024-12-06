@@ -1,0 +1,26 @@
+{
+  "name": "monorepo-react",
+  "version": "1.0.0",
+  "description": "",
+  "main": "index.js",
+  "scripts": {
+    "test": "echo \"Error: no test specified\" && exit 1",
+    "build": "pnpm -r build",
+    "dev": "pnpm -r dev",
+    "clean": "pnpm -r clean",
+    "build:dropbit": "pnpm --filter dropthebit build",
+    "dev:dropbit": "pnpm --filter dropthebit dev"
+  },
+  "devDependencies": {
+    "@types/lodash": "^4.14.0",
+    "@types/node": "^20.0.0",
+    "lodash": "^4.17.21",
+    "typescript": "^5.3.0"
+  },
+  "keywords": [],
+  "author": "",
+  "license": "ISC",
+  "dependencies": {
+    "fp-ts": "^2.16.9"
+  }
+}

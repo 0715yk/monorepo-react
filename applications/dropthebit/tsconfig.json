@@ -1,0 +1,16 @@
+{
+  "extends": "../../tsconfig.base.json",
+  "compilerOptions": {
+    "baseUrl": ".",
+    "paths": {
+      "@myorg/ui": ["../../packages/ui/src"],
+      "@myorg/utils": ["../../packages/utils/src"],
+      "@hooks/*": ["src/hooks/*"]
+    }
+  },
+  "include": [],
+  "references": [
+    { "path": "./tsconfig.node.json" },
+    { "path": "./tsconfig.app.json" }
+  ]
+}
