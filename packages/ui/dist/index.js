@@ -1,3 +1,4 @@
+"use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -29,7 +30,7 @@ var __toCommonJS = (mod) => __copyProps(__defProp({}, "__esModule", { value: tru
 // src/index.tsx
 var src_exports = {};
 __export(src_exports, {
-  FlexFrame: () => FlexFrame,
+  FlexContainer: () => FlexContainer,
   Input: () => Input
 });
 module.exports = __toCommonJS(src_exports);
@@ -37,9 +38,9 @@ module.exports = __toCommonJS(src_exports);
 // src/Input/index.tsx
 var import_react = require("react");
 
-// src/FlexFrame/index.tsx
+// src/FlexContainer/index.tsx
 var import_styled = __toESM(require("@emotion/styled"));
-var FlexFrame = import_styled.default.div`
+var FlexContainer = import_styled.default.div`
   display: flex;
   align-items: ${(props) => props.alignItems || "center"};
   flex-direction: ${(props) => props.direction || "row"};
@@ -81,7 +82,7 @@ var ErrorText = import_styled2.default.span`
 var import_jsx_runtime = require("react/jsx-runtime");
 var Input = (0, import_react.forwardRef)(
   ({ error, label, ...props }, ref) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(FlexFrame, { direction: "column", gap: 4, alignItems: "stretch", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(FlexContainer, { gap: 40, alignItems: "center", children: [
       label && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Label, { children: label }),
       /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StyledInput, { ref, hasError: !!error, ...props }),
       error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ErrorText, { children: error })
@@ -91,6 +92,6 @@ var Input = (0, import_react.forwardRef)(
 Input.displayName = "Input";
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  FlexFrame,
+  FlexContainer,
   Input
 });

@@ -1,2 +1,2 @@
 export * from "./Input";
-export * from "./FlexFrame";
+export * from "./FlexContainer";

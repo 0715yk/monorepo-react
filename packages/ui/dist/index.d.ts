@@ -18,9 +18,9 @@ interface FlexFrameProps {
     alignItems?: "center" | "flex-start" | "stretch";
     wrap?: boolean;
 }
-declare const FlexFrame: _emotion_styled.StyledComponent<{
+declare const FlexContainer: _emotion_styled.StyledComponent<{
     theme?: _emotion_react.Theme;
     as?: React.ElementType;
 } & FlexFrameProps, react.DetailedHTMLProps<react.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, {}>;
 
-export { FlexFrame, Input, type InputProps };
+export { FlexContainer, Input, type InputProps };

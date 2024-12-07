@@ -10,7 +10,7 @@ interface FlexFrameProps {
   wrap?: boolean;
 }
 
-export const FlexFrame = styled.div<FlexFrameProps>`
+export const FlexContainer = styled.div<FlexFrameProps>`
   display: flex;
   align-items: ${(props) => props.alignItems || "center"};
   flex-direction: ${(props) => props.direction || "row"};

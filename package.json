@@ -9,7 +9,9 @@
     "dev": "pnpm -r dev",
     "clean": "pnpm -r clean",
     "build:dropbit": "pnpm --filter dropthebit build",
-    "dev:dropbit": "pnpm --filter dropthebit dev"
+    "dev:dropbit": "pnpm --filter dropthebit dev",
+    "build:crypto": "pnpm --filter crypto-dashboard build",
+    "dev:crypto": "pnpm --filter crypto-dashboard dev"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.0",
