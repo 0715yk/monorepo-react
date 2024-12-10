@@ -1,4 +1,8 @@
 // functional.ts
+import _ from "lodash";
+
+export const isValid = <T>(value: T) =>
+  value !== undefined && value !== null && value !== "";
 
 // 기본적인 함수형 유틸리티
 export const pipe = (...fns: any[]) => {
@@ -51,125 +55,100 @@ export const sequence =
 export const fork = (join: any, fn1: any, fn2: any) => (x: any) =>
   join(fn1(x), fn2(x));
 
-// Maybe 모나드
-export const Maybe = {
-  just: (x: any) => ({
-    map: (fn: any) => Maybe.just(fn(x)),
-    chain: (fn: any) => fn(x),
-    getOrElse: () => x,
-    isNothing: () => false,
-    toString: () => `Just(${x})`,
-  }),
-  nothing: () => ({
-    map: () => Maybe.nothing(),
-    chain: () => Maybe.nothing(),
-    getOrElse: (defaultValue: any) => defaultValue,
-    isNothing: () => true,
-    toString: () => "Nothing",
-  }),
-  fromNullable: (x: any) => (x == null ? Maybe.nothing() : Maybe.just(x)),
-};
-
-/*
-const safeDivide = (n: number) => (d: number) =>
- d === 0 ? Maybe.nothing() : Maybe.just(n / d);
-
-const result = Maybe.just(10)
- .chain(safeDivide(100)) // Just(10)
- .getOrElse(0);
-*/
-
 // Either 모나드
-export class Either<L, R> {
-  protected _value: L | R;
+export class Either {
+  _value: any;
 
-  constructor(value: L | R) {
+  constructor(value: any) {
     this._value = value;
   }
 
-  get value(): L | R {
+  get value() {
     return this._value;
   }
 
-  static left<L, R>(value: L): Either<L, R> {
-    return new Left(value);
+  static left(a: any) {
+    return new Left(a);
   }
 
-  static right<L, R>(value: R): Either<L, R> {
-    return new Right(value);
+  static right(a: any) {
+    return new Right(a);
   }
 
-  static fromNullable<L, R>(
-    value: R | null | undefined,
-    leftValue: L
-  ): Either<L, R> {
-    return value != null
-      ? Either.right<L, R>(value)
-      : Either.left<L, R>(leftValue);
+  static fromNullable(val: any) {
+    return isValid<any>(val) ? Either.right(val) : Either.left(val);
   }
 
-  static of<R>(value: R): Either<never, R> {
-    return Either.right<never, R>(value);
+  static of(a: any) {
+    return Either.right(a);
   }
 }
 
-export class Left<L, R> extends Either<L, R> {
-  constructor(value: L) {
-    super(value);
+export class Left extends Either {
+  map(_: any) {
+    return this; // 쓰지 않음
   }
 
-  map(_: (value: R) => any): this {
+  get value() {
+    throw new TypeError(this._value);
+  }
+
+  getOrElse(other: any) {
+    return other;
+  }
+
+  orElse(f: any) {
+    return f(this._value);
+  }
+
+  chain(f: any) {
     return this;
   }
 
-  get value(): L {
-    throw new Error(`Cannot access value of Left: ${this._value}`);
+  getOrElseThrow(a: any) {
+    throw new Error(a);
   }
 
-  getOrElse(defaultValue: R): R {
-    return defaultValue;
-  }
-
-  chain(_: (value: R) => Either<L, any>): this {
+  filter(f: any) {
     return this;
   }
 
-  orElse(f: (value: L) => Either<L, R>): Either<L, R> {
-    return f(this._value as L);
-  }
-
-  toString(): string {
-    return `Left(${this._value})`;
+  toString() {
+    return this._value;
   }
 }
 
-export class Right<L, R> extends Either<L, R> {
-  constructor(value: R) {
-    super(value);
+export class Right extends Either {
+  map(f: any) {
+    return Either.of(f(this._value));
   }
 
-  map<T>(f: (value: R) => T): Either<L, T> {
-    return Either.right<L, T>(f(this._value as R));
+  get value() {
+    return this._value;
   }
 
-  get value(): R {
-    return this._value as R;
+  getOrElse(other: any) {
+    return this._value;
   }
 
-  getOrElse(_: R): R {
-    return this._value as R;
+  orElse() {
+    return this; // 쓰지 않음
   }
 
-  chain<T>(f: (value: R) => Either<L, T>): Either<L, T> {
-    return f(this._value as R);
+  chain(f: any) {
+    return f(this._value);
   }
 
-  orElse(_: (value: L) => Either<L, R>): this {
-    return this;
+  getOrElseThrow(_: any) {
+    return this._value;
   }
 
-  toString(): string {
-    return `Right(${this._value})`;
+  filter(f: any) {
+    return Either.fromNullable(f(this._value) === null ? this._value : null);
+  }
+
+  toString() {
+    return this._value;
   }
 }
 /* 
@@ -215,3 +194,37 @@ export const asyncSome = (fn: any) => async (arr: any[]) => {
   const results = await Promise.all(arr.map(fn));
   return results.some((x) => x);
 };
+
+export class IO {
+  effect: any;
+
+  constructor(effect: any) {
+    if (!_.isFunction(effect)) {
+      throw "IO 사용법: 함수는 필수입니다!";
+    }
+    this.effect = effect;
+  }
+
+  static of(a: any) {
+    return new IO(() => a);
+  }
+
+  static from(fn: any) {
+    return new IO(fn);
+  }
+
+  map(fn: any) {
+    let self = this;
+    return new IO(() => fn(self.effect()));
+  }
+
+  chain(fn: any) {
+    return fn(this.effect());
+  }
+
+  run() {
+    return this.effect();
+  }
+}
+
+export const liftIO = (val: any) => IO.of(val);

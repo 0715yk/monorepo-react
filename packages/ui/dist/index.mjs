@@ -45,7 +45,7 @@ var ErrorText = styled2.span`
 import { jsx, jsxs } from "react/jsx-runtime";
 var Input = forwardRef(
   ({ error, label, ...props }, ref) => {
-    return /* @__PURE__ */ jsxs(FlexFrame, { direction: "column", gap: 4, alignItems: "stretch", children: [
+    return /* @__PURE__ */ jsxs(FlexFrame, { gap: 40, alignItems: "center", children: [
       label && /* @__PURE__ */ jsx(Label, { children: label }),
       /* @__PURE__ */ jsx(StyledInput, { ref, hasError: !!error, ...props }),
       error && /* @__PURE__ */ jsx(ErrorText, { children: error })

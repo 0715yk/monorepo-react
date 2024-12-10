@@ -1,3 +1,4 @@
+"use strict";
 var __create = Object.create;
 var __defProp = Object.defineProperty;
 var __getOwnPropDesc = Object.getOwnPropertyDescriptor;
@@ -81,7 +82,7 @@ var ErrorText = import_styled2.default.span`
 var import_jsx_runtime = require("react/jsx-runtime");
 var Input = (0, import_react.forwardRef)(
   ({ error, label, ...props }, ref) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(FlexFrame, { direction: "column", gap: 4, alignItems: "stretch", children: [
+    return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(FlexFrame, { gap: 40, alignItems: "center", children: [
       label && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Label, { children: label }),
       /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StyledInput, { ref, hasError: !!error, ...props }),
       error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ErrorText, { children: error })

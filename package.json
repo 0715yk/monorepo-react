@@ -12,9 +12,11 @@
     "dev:dropbit": "pnpm --filter dropthebit dev"
   },
   "devDependencies": {
+    "@types/cypress": "^1.1.6",
     "@types/lodash": "^4.14.0",
     "@types/node": "^20.0.0",
     "lodash": "^4.17.21",
+    "ts-node": "^10.9.2",
     "typescript": "^5.3.0"
   },
   "keywords": [],
