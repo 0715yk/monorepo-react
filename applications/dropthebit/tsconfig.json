@@ -5,7 +5,8 @@
     "paths": {
       "@myorg/ui": ["../../packages/ui/src"],
       "@myorg/utils": ["../../packages/utils/src"],
-      "@hooks/*": ["src/hooks/*"]
+      "@hooks/*": ["src/hooks/*"],
+      "@constants/*": ["src/constants/*"]
     }
   },
   "include": [],

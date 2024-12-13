@@ -4,6 +4,11 @@ import _ from "lodash";
 export const isValid = <T>(value: T) =>
   value !== undefined && value !== null && value !== "";
 
+export const isEitherValid = <T>(value: T) =>
+  value !== undefined && value !== null && value !== ""
+    ? Either.right(value)
+    : Either.left("Invalid value");
+
 // 기본적인 함수형 유틸리티
 export const pipe = (...fns: any[]) => {
   return (x: any) => fns.reduce((acc, fn) => fn(acc), x);
