@@ -1,0 +1,12 @@
+.page {
+  position: absolute;
+  height: 100%;
+  width: 100%;
+}
+
+.main {
+  padding: 2rem 4rem;
+  min-width: 1040px;
+  box-sizing: border-box;
+  min-height: calc(100vh - 64px);
+}

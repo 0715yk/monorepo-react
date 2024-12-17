@@ -9,10 +9,11 @@
     "dev": "pnpm -r dev",
     "clean": "pnpm -r clean",
     "build:dropbit": "pnpm --filter dropthebit build",
-    "dev:dropbit": "pnpm --filter dropthebit dev"
+    "dev:dropbit": "pnpm --filter dropthebit dev",
+    "build:quarry": "pnpm --filter quarryperson build",
+    "dev:quarry": "pnpm --filter quarryperson dev"
   },
   "devDependencies": {
-    "@types/cypress": "^1.1.6",
     "@types/lodash": "^4.14.0",
     "@types/node": "^20.0.0",
     "lodash": "^4.17.21",

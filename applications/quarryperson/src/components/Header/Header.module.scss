@@ -1,0 +1,49 @@
+.header {
+  position: sticky;
+  top: 0;
+  width: 100%;
+  min-width: 1140px;
+  box-sizing: border-box;
+  box-sizing: border-box;
+  height: 64px;
+  padding: 0 4rem;
+  background-color: var(--background-header, var(--background-white));
+  border-bottom: 1px solid var(--border-color);
+  box-shadow: 0 2px 8px rgba(0, 0, 0, 0.1);
+  display: flex;
+  align-items: center;
+  justify-content: space-between;
+  z-index: 100;
+
+  h1 {
+    font-size: 1.25rem;
+    font-weight: 600;
+    color: var(--main-blue);
+  }
+
+  nav {
+    ul {
+      display: flex;
+      gap: 1rem;
+      list-style: none;
+
+      button {
+        padding: 0.5rem 1.8rem;
+        font-size: 0.875rem;
+        font-weight: 600;
+        color: #ffffff;
+        background-color: var(--main-blue);
+        border-radius: 0.5rem;
+        transition: background-color 0.2s ease-in-out;
+
+        &:hover {
+          background-color: var(--main-blue-hover);
+        }
+
+        &:active {
+          background-color: var(--main-blue-active);
+        }
+      }
+    }
+  }
+}
