@@ -60,6 +60,77 @@ export const sequence =
 export const fork = (join: any, fn1: any, fn2: any) => (x: any) =>
   join(fn1(x), fn2(x));
 
+// Maybe 모나드
+export class Maybe {
+  static just(a: any) {
+    return new Just(a);
+  }
+  static nothing() {
+    return new Nothing();
+  }
+  static fromNullable(a: any): Maybe {
+    return a !== null ? Maybe.just(a) : Maybe.nothing();
+  }
+  static of(a: any) {
+    return this.just(a);
+  }
+  get isNothing() {
+    return false;
+  }
+  get isJust() {
+    return false;
+  }
+}
+
+export class Just extends Maybe {
+  _value: any;
+  constructor(value: any) {
+    super();
+    this._value = value;
+  }
+
+  get value() {
+    return this._value;
+  }
+  map(f: any) {
+    return Maybe.fromNullable(f(this._value));
+  }
+  getOrElse() {
+    return this._value;
+  }
+  filter(f: any) {
+    Maybe.fromNullable(f(this._value) ? this._value : null);
+  }
+  chain(f: any) {
+    return f(this._value);
+  }
+  toString() {
+    return `Maybe.Just(${this._value})`;
+  }
+}
+
+export class Nothing extends Maybe {
+  _value: any;
+  map(f: any) {
+    return this;
+  }
+  get value() {
+    throw new TypeError("Nothing 값을 가져올 수 없습니다.");
+  }
+  getOrElse(other: any) {
+    return other;
+  }
+  filter(f: any) {
+    return this._value;
+  }
+  chain(f: any) {
+    return this;
+  }
+  toString() {
+    return `Maybe.Nothing`;
+  }
+}
+
 // Either 모나드
 export class Either {
   _value: any;
@@ -233,3 +304,6 @@ export class IO {
 }
 
 export const liftIO = (val: any) => IO.of(val);
+
+export const map = curry((fn: any, functor: any) => functor.map(fn));
+export const chain = curry((fn: any, m: any) => m.chain(fn));
