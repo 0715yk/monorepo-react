@@ -11,7 +11,8 @@
     "build:dropbit": "pnpm --filter dropthebit build",
     "dev:dropbit": "pnpm --filter dropthebit dev",
     "build:quarry": "pnpm --filter quarryperson build",
-    "dev:quarry": "pnpm --filter quarryperson dev"
+    "dev:quarry": "pnpm --filter quarryperson dev",
+    "build:ui": "pnpm --filter ui build"
   },
   "devDependencies": {
     "@types/lodash": "^4.14.0",

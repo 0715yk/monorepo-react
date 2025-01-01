@@ -1,27 +1,5 @@
-import * as react from 'react';
-import { InputHTMLAttributes } from 'react';
-import * as _emotion_styled from '@emotion/styled';
-import * as _emotion_react from '@emotion/react';
-
-interface InputProps extends InputHTMLAttributes<HTMLInputElement> {
-    error?: string;
-    label?: string;
-}
-declare const Input: react.ForwardRefExoticComponent<InputProps & react.RefAttributes<HTMLInputElement>>;
-
-interface FlexFrameProps {
-    direction?: "row" | "column";
-    gap?: number;
-    justifyDirection?: "flex-start" | "center" | "space-between";
-    width?: string;
-    height?: string;
-    alignItems?: "center" | "flex-start" | "stretch";
-    wrap?: boolean;
-}
-declare const FlexFrame: _emotion_styled.StyledComponent<{
-    theme?: _emotion_react.Theme;
-    as?: React.ElementType;
-} & FlexFrameProps, react.DetailedHTMLProps<react.HTMLAttributes<HTMLDivElement>, HTMLDivElement>, {}>;
+import * as react_jsx_runtime from 'react/jsx-runtime';
+import { ReactNode, CSSProperties } from 'react';
 
 declare const useSkipFirstRender: (callback: () => void, deps: any[]) => void;
 
@@ -82,4 +60,18 @@ declare const useValidation: ({ formData, metadata }: UseValidationProps) => {
     isFormValid: boolean;
 };
 
-export { type ErrorMessage, FlexFrame, type FormData, type FormErrors, Input, type InputProps, type MetaData, type Validator, type ValidatorRef, useSkipFirstRender, useValidation };
+declare const useScroll: () => boolean;
+
+interface FlexContainerProps {
+    children: ReactNode;
+    gap?: number;
+    alignItems?: CSSProperties["alignItems"];
+    justifyContent?: CSSProperties["justifyContent"];
+    flexDirection?: "row" | "column";
+    width?: string;
+    height?: string;
+    style?: CSSProperties;
+}
+declare const FlexContainer: ({ children, gap, alignItems, justifyContent, flexDirection, height, width, style, }: FlexContainerProps) => react_jsx_runtime.JSX.Element;
+
+export { type ErrorMessage, FlexContainer, type FormData, type FormErrors, type MetaData, type Validator, type ValidatorRef, useScroll, useSkipFirstRender, useValidation };

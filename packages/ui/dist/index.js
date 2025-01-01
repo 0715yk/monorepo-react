@@ -639,9 +639,9 @@ var require_lodash = __commonJS({
         }
         return result;
       }
-      function mapToArray(map) {
-        var index = -1, result = Array(map.size);
-        map.forEach(function(value, key) {
+      function mapToArray(map2) {
+        var index = -1, result = Array(map2.size);
+        map2.forEach(function(value, key) {
           result[++index] = [key, value];
         });
         return result;
@@ -2755,8 +2755,8 @@ var require_lodash = __commonJS({
           result2 = result2 === iteratee ? baseIteratee : result2;
           return arguments.length ? result2(arguments[0], arguments[1]) : result2;
         }
-        function getMapData(map2, key) {
-          var data = map2.__data__;
+        function getMapData(map3, key) {
+          var data = map3.__data__;
           return isKeyable(key) ? data[typeof key == "string" ? "string" : "hash"] : data.map;
         }
         function getMatchData(object) {
@@ -3554,7 +3554,7 @@ var require_lodash = __commonJS({
           iteratee2 = typeof iteratee2 == "function" ? (arrays.pop(), iteratee2) : undefined2;
           return unzipWith(arrays, iteratee2);
         });
-        function chain(value) {
+        function chain2(value) {
           var result2 = lodash(value);
           result2.__chain__ = true;
           return result2;
@@ -3587,7 +3587,7 @@ var require_lodash = __commonJS({
           });
         });
         function wrapperChain() {
-          return chain(this);
+          return chain2(this);
         }
         function wrapperCommit() {
           return new LodashWrapper(this.value(), this.__chain__);
@@ -3660,14 +3660,14 @@ var require_lodash = __commonJS({
         var find = createFind(findIndex);
         var findLast = createFind(findLastIndex);
         function flatMap(collection, iteratee2) {
-          return baseFlatten(map(collection, iteratee2), 1);
+          return baseFlatten(map2(collection, iteratee2), 1);
         }
         function flatMapDeep(collection, iteratee2) {
-          return baseFlatten(map(collection, iteratee2), INFINITY);
+          return baseFlatten(map2(collection, iteratee2), INFINITY);
         }
         function flatMapDepth(collection, iteratee2, depth) {
           depth = depth === undefined2 ? 1 : toInteger(depth);
-          return baseFlatten(map(collection, iteratee2), depth);
+          return baseFlatten(map2(collection, iteratee2), depth);
         }
         function forEach(collection, iteratee2) {
           var func = isArray(collection) ? arrayEach : baseEach;
@@ -3703,7 +3703,7 @@ var require_lodash = __commonJS({
         var keyBy = createAggregator(function(result2, value, key) {
           baseAssignValue(result2, key, value);
         });
-        function map(collection, iteratee2) {
+        function map2(collection, iteratee2) {
           var func = isArray(collection) ? arrayMap : baseMap;
           return func(collection, getIteratee(iteratee2, 3));
         }
@@ -4896,14 +4896,14 @@ var require_lodash = __commonJS({
             object = this;
             methodNames = baseFunctions(source, keys(source));
           }
-          var chain2 = !(isObject(options) && "chain" in options) || !!options.chain, isFunc = isFunction(object);
+          var chain3 = !(isObject(options) && "chain" in options) || !!options.chain, isFunc = isFunction(object);
           arrayEach(methodNames, function(methodName) {
             var func = source[methodName];
             object[methodName] = func;
             if (isFunc) {
               object.prototype[methodName] = function() {
                 var chainAll = this.__chain__;
-                if (chain2 || chainAll) {
+                if (chain3 || chainAll) {
                   var result2 = object(this.__wrapped__), actions = result2.__actions__ = copyArray(this.__actions__);
                   actions.push({ "func": func, "args": arguments, "thisArg": object });
                   result2.__chain__ = chainAll;
@@ -5032,7 +5032,7 @@ var require_lodash = __commonJS({
         lodash.bindAll = bindAll;
         lodash.bindKey = bindKey;
         lodash.castArray = castArray;
-        lodash.chain = chain;
+        lodash.chain = chain2;
         lodash.chunk = chunk;
         lodash.compact = compact;
         lodash.concat = concat;
@@ -5081,7 +5081,7 @@ var require_lodash = __commonJS({
         lodash.keyBy = keyBy;
         lodash.keys = keys;
         lodash.keysIn = keysIn;
-        lodash.map = map;
+        lodash.map = map2;
         lodash.mapKeys = mapKeys;
         lodash.mapValues = mapValues;
         lodash.matches = matches;
@@ -5514,74 +5514,16 @@ var require_lodash = __commonJS({
 // src/index.tsx
 var src_exports = {};
 __export(src_exports, {
-  FlexFrame: () => FlexFrame,
-  Input: () => Input,
   useSkipFirstRender: () => useSkipFirstRender,
   useValidation: () => useValidation
 });
 module.exports = __toCommonJS(src_exports);
 
-// src/Input/index.tsx
-var import_react = require("react");
-
-// src/FlexFrame/index.tsx
-var import_styled = __toESM(require("@emotion/styled"));
-var FlexFrame = import_styled.default.div`
-  display: flex;
-  align-items: ${(props) => props.alignItems || "center"};
-  flex-direction: ${(props) => props.direction || "row"};
-  justify-content: ${(props) => props.justifyDirection || "flex-start"};
-  gap: ${(props) => props.gap || 0}px;
-  width: ${(props) => props.width || "auto"};
-  height: ${(props) => props.height || "auto"};
-  flex-wrap: ${(props) => props.wrap ? "wrap" : "nowrap"};
-`;
-
-// src/Input/styles.ts
-var import_styled2 = __toESM(require("@emotion/styled"));
-var InputWrapper = import_styled2.default.div`
-  display: flex;
-  flex-direction: column;
-  gap: 4px;
-`;
-var StyledInput = import_styled2.default.input`
-  padding: 8px 12px;
-  border: 1px solid ${(props) => props.hasError ? "red" : "#ccc"};
-  border-radius: 4px;
-  font-size: 14px;
-
-  &:focus {
-    outline: none;
-    border-color: ${(props) => props.hasError ? "red" : "#0066ff"};
-  }
-`;
-var Label = import_styled2.default.label`
-  font-size: 14px;
-  color: #333;
-`;
-var ErrorText = import_styled2.default.span`
-  font-size: 12px;
-  color: red;
-`;
-
-// src/Input/index.tsx
-var import_jsx_runtime = require("react/jsx-runtime");
-var Input = (0, import_react.forwardRef)(
-  ({ error, label, ...props }, ref) => {
-    return /* @__PURE__ */ (0, import_jsx_runtime.jsxs)(FlexFrame, { gap: 40, alignItems: "center", children: [
-      label && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(Label, { children: label }),
-      /* @__PURE__ */ (0, import_jsx_runtime.jsx)(StyledInput, { ref, hasError: !!error, ...props }),
-      error && /* @__PURE__ */ (0, import_jsx_runtime.jsx)(ErrorText, { children: error })
-    ] });
-  }
-);
-Input.displayName = "Input";
-
 // src/hooks/useSkipFirstRender.ts
-var import_react2 = require("react");
+var import_react = require("react");
 var useSkipFirstRender = (callback, deps) => {
-  const isFirstRender = (0, import_react2.useRef)(true);
-  (0, import_react2.useEffect)(() => {
+  const isFirstRender = (0, import_react.useRef)(true);
+  (0, import_react.useEffect)(() => {
     if (isFirstRender.current) {
       isFirstRender.current = false;
       return;
@@ -5591,7 +5533,7 @@ var useSkipFirstRender = (callback, deps) => {
 };
 
 // src/hooks/useValidation.ts
-var import_react3 = require("react");
+var import_react2 = require("react");
 
 // ../utils/src/functional/index.ts
 var import_lodash = __toESM(require_lodash());
@@ -5686,6 +5628,8 @@ var Right = class extends Either {
     return this._value;
   }
 };
+var map = curry((fn, functor) => functor.map(fn));
+var chain = curry((fn, m) => m.chain(fn));
 
 // ../utils/src/constants/validation.ts
 var NICKNAME_LENGTH_ERROR_MESSAGE = "\uB2C9\uB124\uC784\uC740 3\uAE00\uC790 \uC774\uC0C1 15\uAE00\uC790 \uC774\uD558\uB85C \uC785\uB825\uD574\uC8FC\uC138\uC694.";
@@ -5786,28 +5730,28 @@ var createFieldValidator = (field, setErrors) => {
 // src/hooks/useValidation.ts
 var import_lodash2 = __toESM(require_lodash());
 var useValidation = ({ formData, metadata }) => {
-  const [errors, setErrors] = (0, import_react3.useState)({});
-  const prevFormData = (0, import_react3.useRef)(formData);
-  const validatorRef = (0, import_react3.useRef)({});
-  const filterActualChangedFields = (0, import_react3.useCallback)(
+  const [errors, setErrors] = (0, import_react2.useState)({});
+  const prevFormData = (0, import_react2.useRef)(formData);
+  const validatorRef = (0, import_react2.useRef)({});
+  const filterActualChangedFields = (0, import_react2.useCallback)(
     (field) => formData[field] !== prevFormData.current[field],
     [formData]
   );
-  const checkValueIsReset = (0, import_react3.useCallback)(
+  const checkValueIsReset = (0, import_react2.useCallback)(
     (field) => !isValid(formData[field]),
     [formData]
   );
-  const activateValidator = (0, import_react3.useCallback)(
+  const activateValidator = (0, import_react2.useCallback)(
     (field) => {
       validatorRef.current[field](formData[field]);
     },
     [formData]
   );
-  const checkValidatorSaved = (0, import_react3.useCallback)(
+  const checkValidatorSaved = (0, import_react2.useCallback)(
     (field) => validatorRef?.current && validatorRef.current[field],
     []
   );
-  const handleSetErrors = (0, import_react3.useCallback)(
+  const handleSetErrors = (0, import_react2.useCallback)(
     (0, import_lodash2.curry)((value, field) => {
       setErrors((prev) => ({
         ...prev,
@@ -5837,22 +5781,22 @@ var useValidation = ({ formData, metadata }) => {
   useSkipFirstRender(() => {
     sequence(handleValidate, resetPrevFormData)(formData);
   }, [formData, metadata]);
-  const hasMetaData = (0, import_react3.useCallback)(
+  const hasMetaData = (0, import_react2.useCallback)(
     (metadata2) => metadata2 !== void 0,
     [metadata]
   );
-  const hasValidator = (0, import_react3.useCallback)(
+  const hasValidator = (0, import_react2.useCallback)(
     (field) => hasMetaData(metadata) && metadata[field] !== void 0 ? field : false,
     [metadata]
   );
-  const isRequired = (0, import_react3.useCallback)(
+  const isRequired = (0, import_react2.useCallback)(
     (field) => hasMetaData(metadata) && metadata[field].required ? true : false,
     [metadata]
   );
-  const initializeErrors = (0, import_react3.useCallback)((formData2) => {
+  const initializeErrors = (0, import_react2.useCallback)((formData2) => {
     Object.keys(formData2).forEach(handleFirstRenderingField);
   }, []);
-  const initializeValidator = (0, import_react3.useCallback)(
+  const initializeValidator = (0, import_react2.useCallback)(
     (field) => {
       validatorRef.current[field] = createFieldValidator(
         field,
@@ -5861,7 +5805,7 @@ var useValidation = ({ formData, metadata }) => {
     },
     [metadata]
   );
-  const initializeMetadata = (0, import_react3.useCallback)(() => {
+  const initializeMetadata = (0, import_react2.useCallback)(() => {
     Object.keys(formData).forEach(
       alt(
         hasValidator,
@@ -5873,7 +5817,7 @@ var useValidation = ({ formData, metadata }) => {
       )
     );
   }, [formData, initializeValidator, isRequired, handleSetErrors]);
-  (0, import_react3.useEffect)(() => {
+  (0, import_react2.useEffect)(() => {
     initializeErrors(formData);
     initializeMetadata();
   }, []);
@@ -5886,8 +5830,6 @@ var useValidation = ({ formData, metadata }) => {
 };
 // Annotate the CommonJS export names for ESM import in node:
 0 && (module.exports = {
-  FlexFrame,
-  Input,
   useSkipFirstRender,
   useValidation
 });

@@ -285,6 +285,10 @@ export class IO {
     return new IO(() => a);
   }
 
+  static lift(fn: any) {
+    return new IO(() => fn());
+  }
+
   static from(fn: any) {
     return new IO(fn);
   }
@@ -304,6 +308,16 @@ export class IO {
 }
 
 export const liftIO = (val: any) => IO.of(val);
-
 export const map = curry((fn: any, functor: any) => functor.map(fn));
 export const chain = curry((fn: any, m: any) => m.chain(fn));
+
+// 재귀함수의 메모리 비효율성을 최적화하면서 동시에 재귀 로직은 그대로 쓸 수 있는 헬퍼 함수.
+export const trampoline = (fn: any) => {
+  return function (...args: any) {
+    let result = fn(...args);
+    while (typeof result === "function") {
+      result = result();
+    }
+    return result;
+  };
+};
