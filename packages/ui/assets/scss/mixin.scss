@@ -1,0 +1,557 @@
+@use "figma" as *;
+@use "sass:map";
+
+// 글자 관련
+
+@mixin text-style-title-xxl-36-b() {
+  font-size: 36px;
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-style: normal;
+  line-height: 44px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-title-xl-28-b() {
+  font-size: 28px;
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-style: normal;
+  line-height: 34px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-title-xl-24-b() {
+  font-size: 24px;
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-style: normal;
+  line-height: 30px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-title-l-20-b() {
+  font-size: 20px;
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-style: normal;
+  line-height: 24px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-title-l-18-b() {
+  font-size: 18px;
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-style: normal;
+  line-height: 24px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-title-m-16-b() {
+  font-size: 16px;
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-style: normal;
+  line-height: 20px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-title-m-14-b() {
+  font-size: 14px;
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-style: normal;
+  line-height: 18px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-title-s-13-b() {
+  font-size: 13px;
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-style: normal;
+  line-height: 16px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-body-l-16-r() {
+  font-size: 16px;
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-style: normal;
+  line-height: 28px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-body-l-15-r() {
+  font-size: 15px;
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-style: normal;
+  line-height: 24px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-body-m-14-b() {
+  font-size: 14px;
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-style: normal;
+  line-height: 20px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-body-m-14-r() {
+  font-size: 14px;
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-style: normal;
+  line-height: 20px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-body-m-13-b() {
+  font-size: 13px;
+  font-family: "Pretendard";
+  font-weight: 600;
+  font-style: normal;
+  line-height: 18px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-body-m-13-r() {
+  font-size: 13px;
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-style: normal;
+  line-height: 18px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-paragraph-m-13-r() {
+  font-size: 13px;
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-style: normal;
+  line-height: 21px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-caption-l-14-r() {
+  font-size: 14px;
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-style: normal;
+  line-height: 16px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-caption-m-12-b() {
+  font-size: 12px;
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-style: normal;
+  line-height: 16px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-caption-m-12-r() {
+  font-size: 12px;
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-style: normal;
+  line-height: 16px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-caption-s-10-b() {
+  font-size: 10px;
+  font-family: "Pretendard";
+  font-weight: 700;
+  font-style: normal;
+  line-height: 12px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin text-style-caption-s-10-r() {
+  font-size: 10px;
+  font-family: "Pretendard";
+  font-weight: 400;
+  font-style: normal;
+  line-height: 12px;
+  text-decoration: none;
+  text-transform: none;
+}
+@mixin effect-style-50() {
+  box-shadow: 2px 2px 8px rgba(0, 0, 0, 0.2);
+}
+@mixin effect-style-100() {
+  box-shadow: 4px 4px 12px rgba(0, 0, 0, 0.2);
+}
+@mixin effect-style-200() {
+  box-shadow: 4px 4px 16px rgba(0, 0, 0, 0.28);
+}
+@mixin effect-style-300() {
+  box-shadow: 4px 4px 24px rgba(0, 0, 0, 0.4);
+}
+@mixin effect-style-400() {
+  box-shadow: 4px 4px 32px rgba(0, 0, 0, 0.6);
+}
+
+// 유틸
+@mixin textOverflow($whiteSpace: nowrap) {
+  overflow: hidden;
+  white-space: $whiteSpace;
+  text-overflow: ellipsis;
+}
+
+// 기본 버튼
+@mixin button($size: "medium", $type: "primary") {
+  // 공통
+  overflow: hidden;
+  display: flex;
+  border-radius: 6px;
+  align-items: center;
+  justify-content: center;
+  gap: 8px;
+  padding: 0 12px;
+  white-space: nowrap;
+  transition: all 0.2s;
+  .icon {
+    width: 14px;
+    height: 14px;
+    flex-grow: 0;
+    flex-shrink: 0;
+  }
+  .text {
+    @include textOverflow;
+  }
+
+  // 크기
+  @if ($size == "large") {
+    & {
+      height: 48px;
+      @include text-style-body-m-14-b;
+    }
+  }
+  @if ($size == "medium") {
+    & {
+      height: 42px;
+      @include text-style-body-m-13-b;
+    }
+  }
+  @if ($size == "small") {
+    & {
+      height: 36px;
+    }
+    @if ($type == "secondary-line" or $type == "warning-line") {
+      & {
+        @include text-style-body-m-13-r;
+      }
+    } @else {
+      & {
+        @include text-style-body-m-13-b;
+      }
+    }
+  }
+
+  // 타입
+  @if ($type == "primary") {
+    // 기본
+    & {
+      color: var(--color-white);
+    }
+    @if ($size == "small") {
+      & {
+        background-color: var(--color-blue-300);
+      }
+    } @else {
+      & {
+        background-color: var(--color-primary-100);
+      }
+    }
+    // 오버
+    &:hover {
+      background-color: var(--color-primary-200);
+    }
+    // 활성
+    &[data-active="true"] {
+      background-color: var(--color-primary-50);
+    }
+    // 비활성
+    &:disabled {
+      color: var(--color-grey-500);
+      background-color: var(--color-disabled);
+    }
+  }
+  @if ($type == "secondary") {
+    // 기본
+    & {
+      color: var(--color-grey-900);
+      background-color: var(--color-secondary-100);
+    }
+    // 오버
+    &:hover {
+      background-color: var(--color-secondary-200);
+    }
+    // 활성
+    &[data-active="true"] {
+      background-color: var(--color-secondary-300);
+    }
+    // 비활성
+    &:disabled {
+      color: var(--color-grey-500);
+      background-color: var(--color-disabled);
+    }
+  }
+  @if ($type == "secondary-line") {
+    // 기본
+    & {
+      border: 1px solid var(--color-grey-300);
+    }
+    @if ($size == "small") {
+      & {
+        color: var(--color-grey-900);
+      }
+    } @else {
+      & {
+        color: var(--color-grey-800);
+      }
+    }
+    // 오버
+    &:hover {
+      border-color: var(--color-grey-400);
+    }
+    // 활성
+    &[data-active="true"] {
+      border-color: var(--color-grey-300);
+      background-color: var(--color-grey-100);
+    }
+    // 비활성
+    &:disabled {
+      color: var(--color-grey-400);
+      border-color: var(--color-grey-300);
+    }
+  }
+  @if ($type == "warning") {
+    // 기본
+    & {
+      color: var(--color-white);
+      background-color: var(--color-warning-100);
+    }
+    // 오버
+    &:hover {
+      background-color: var(--color-warning-200);
+    }
+    // 활성
+    &[data-active="true"] {
+      background-color: var(--color-warning-50);
+    }
+    // 비활성
+    &:disabled {
+      color: var(--color-grey-500);
+      background-color: var(--color-disabled);
+    }
+  }
+  @if ($type == "warning-line") {
+    & {
+      // 기본
+      border: 1px solid var(--color-grey-300);
+      color: var(--color-warning-100);
+    }
+    // 오버
+    &:hover {
+      border-color: var(--color-grey-400);
+      color: var(--color-warning-200);
+    }
+    // 활성
+    &[data-active="true"] {
+      border-color: var(--color-grey-300);
+      color: var(--color-warning-50);
+      background-color: var(--color-grey-100);
+    }
+    // 비활성
+    &:disabled {
+      color: var(--color-grey-400);
+      border-color: var(--color-grey-300);
+    }
+  }
+}
+
+// 아이콘 버튼
+@mixin iconButton($options: ()) {
+  $buttonSize: map.get($options, "buttonSize") or 36px; // 버튼 사이즈
+  $iconSize: map.get($options, "iconSize") or 16px; // 아이콘 사이즈
+  $borderRadius: map.get($options, "borderRadius") or 6px; // 보더 래디우스
+
+  $defaultBgColor: map.get($options, "defaultBgColor") or transparent; // 기본 배경색
+  $defaultLineColor: map.get($options, "defaultLineColor") or $defaultBgColor; // 기본 라인색
+  $defaultBgOpacity: map.get($options, "defaultBgOpacity") or 0; // 기본 배경투명도
+  $defaultIconColor: map.get($options, "defaultIconColor") or
+    var(--color-grey-900); // 기본 아이콘색
+
+  $hoverBgColor: map.get($options, "hoverBgColor") or var(--color-grey-900); // 오버 배경색
+  $hoverLineColor: map.get($options, "hoverLineColor") or $hoverBgColor; // 오버 라인색
+  $hoverBgOpacity: map.get($options, "hoverBgOpacity") or 0.07; // 오버 배경투명도
+  $hoverIconColor: map.get($options, "hoverIconColor") or var(--color-grey-900); // 오버 아이콘색
+
+  $activeBgColor: map.get($options, "activeBgColor") or $hoverBgColor; // 활성 배경색
+  $activeLineColor: map.get($options, "activeLineColor") or $activeBgColor; // 활성 라인색
+  $activeIconColor: map.get($options, "activeIconColor") or
+    var(--color-blue-400); // 활성 아이콘색
+
+  $disabledBgOpacity: map.get($options, "disabledBgOpacity") or 1; // 비활성 배경투명도
+  $disabledIconColor: map.get($options, "disabledIconColor") or
+    var(--color-grey-400); // 비활성 아이콘색
+
+  // 기본
+  z-index: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  width: $buttonSize;
+  height: $buttonSize;
+  transition: all 0.2s;
+  &:before {
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    background-color: $defaultBgColor;
+    border: 1px solid $defaultLineColor;
+    border-radius: $borderRadius;
+    opacity: $defaultBgOpacity;
+    transition: all 0.2s;
+    content: "";
+  }
+  .icon {
+    width: $iconSize;
+    height: $iconSize;
+    color: $defaultIconColor;
+    transition: all 0.2s;
+  }
+  // 오버
+  &:hover {
+    &:before {
+      background-color: $hoverBgColor;
+      border-color: $hoverLineColor;
+      opacity: $hoverBgOpacity;
+    }
+    .icon {
+      color: $hoverIconColor;
+    }
+  }
+  // 활성
+  &[data-active="true"] {
+    &:before {
+      background-color: $activeBgColor;
+      border-color: $activeLineColor;
+      opacity: $hoverBgOpacity;
+    }
+    .icon {
+      color: $activeIconColor;
+    }
+  }
+  // 비활성
+  &:disabled {
+    &:before {
+      background-color: $defaultBgColor;
+      border-color: $defaultLineColor;
+      opacity: $disabledBgOpacity;
+    }
+    .icon {
+      color: $disabledIconColor;
+    }
+  }
+}
+
+// 원형 버튼
+@mixin circleButton($size: "medium", $useTheme: "true") {
+  // 공통
+  z-index: 0;
+  position: relative;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  transition: all 0.2s;
+  &:before {
+    z-index: -1;
+    position: absolute;
+    inset: 0;
+    border-radius: 50%;
+    transition: all 0.2s;
+    content: "";
+  }
+  .icon {
+    transition: all 0.2s;
+  }
+
+  // 사이즈
+  @if ($size== "medium") {
+    & {
+      width: 40px;
+      height: 40px;
+      .icon {
+        width: 18px;
+        height: 18px;
+      }
+    }
+  }
+  @if ($size == "small") {
+    & {
+      width: 32px;
+      height: 32px;
+      .icon {
+        width: 14px;
+        height: 14px;
+      }
+    }
+  }
+
+  // 테마 대응
+  @if ($useTheme == "true") {
+    &:before {
+      background-color: var(--color-grey-900);
+      opacity: 0.15;
+    }
+    .icon {
+      color: var(--color-grey-900);
+    }
+    &:hover {
+      &:before {
+        opacity: 0.3;
+      }
+    }
+    &:disabled {
+      &:before {
+        opacity: 0.2;
+      }
+      .icon {
+        opacity: 0.15;
+      }
+    }
+  }
+  @if ($useTheme == "false") {
+    &:before {
+      background-color: var(--color-white);
+      opacity: 0.25;
+    }
+    .icon {
+      color: var(--color-white);
+    }
+    &:hover {
+      &:before {
+        opacity: 0.5;
+      }
+    }
+    &:disabled {
+      &:before {
+        opacity: 0.25;
+      }
+      .icon {
+        opacity: 0.2;
+      }
+    }
+  }
+}

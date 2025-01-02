@@ -1,0 +1,98 @@
+:root {
+  color-scheme: light;
+}
+
+:root[data-theme="light"] {
+  color-scheme: dark;
+}
+
+html {
+  width: 100vw;
+  height: 100vh;
+}
+body {
+  position: relative;
+  height: 100%;
+  width: 100%;
+  margin: 0;
+  user-select: none;
+  background-color: var(--color-min);
+  box-sizing: border-box;
+}
+
+h1,
+h2,
+h3,
+h4,
+h5,
+h6 {
+  margin: 0;
+}
+p {
+  margin: 0;
+}
+ul {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+ol {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+}
+li {
+  list-style: none;
+}
+dl {
+  margin: 0;
+}
+dd {
+  margin: 0;
+}
+a {
+  text-decoration: none;
+  outline: none;
+  color: inherit;
+}
+button {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  outline: none;
+  vertical-align: top;
+  cursor: pointer;
+  &[disabled] {
+    cursor: default;
+  }
+}
+input {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  outline: none;
+  vertical-align: top;
+  caret-color: var(--color-blue-400);
+  margin: 0;
+}
+textarea {
+  padding: 0;
+  border: none;
+  font: inherit;
+  color: inherit;
+  background-color: transparent;
+  outline: none;
+  vertical-align: top;
+  caret-color: var(--color-blue-400);
+  resize: none;
+}
+[popover] {
+  margin: 0;
+  padding: 0;
+  border: 0;
+  background-color: transparent;
+}

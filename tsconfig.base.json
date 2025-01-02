@@ -18,11 +18,9 @@
     "allowJs": false,
     "baseUrl": ".",
     "paths": {
-      "@myorg/ui": ["packages/ui/src"],
-      "@myorg/ui/hooks": ["packages/ui/src/hooks"],
-      "@myorg/ui/components": ["packages/ui/src/components"],
-      "@myorg/ui/types": ["packages/ui/src/types"],
-      "@myorg/utils": ["packages/utils/src"]
+      "@myorg/ui/*": ["packages/ui/src/*"],
+      "@myorg/assets/*": ["packages/ui/assets/*"],
+      "@myorg/utils/*": ["packages/utils/src/*"]
     }
   }
 }

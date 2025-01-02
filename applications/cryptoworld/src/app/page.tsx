@@ -3,12 +3,7 @@ import { FlexContainer } from '@myorg/ui/components';
 
 export default function Home() {
   return (
-    <FlexContainer
-      alignItems="flex-start"
-      gap={10}
-      height="calc(100vh + 500px)"
-      style={{}}
-    >
+    <FlexContainer alignItems="flex-start" gap={10} height="100vh">
       <img
         className={styles.image}
         src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fupload.wikimedia.org%2Fwikipedia%2Fcommons%2F9%2F9d%2F2017_%25EA%25B8%25B0%25EB%25A6%25AC%25EB%25B3%25B4%25EC%259D%25B4.jpg&type=sc960_832"

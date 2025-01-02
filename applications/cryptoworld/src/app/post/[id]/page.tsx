@@ -1,8 +1,3 @@
-interface Props {
-  params: { id: string };
+export default function ContentPage() {
+  return <div>test</div>;
 }
-const ContentPage = ({ params }: Props) => {
-  return <div>{params.id}</div>;
-};
-
-export default ContentPage;
