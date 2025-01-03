@@ -11,11 +11,11 @@ export default function Home() {
       <img
         className={styles.image}
         src="https://search.pstatic.net/common/?src=http%3A%2F%2Fimgnews.naver.net%2Fimage%2F5206%2F2020%2F02%2F17%2F0000061301_002_20200217142810699.jpg&type=sc960_832"
-      />{' '}
+      />
       <img
         className={styles.image}
         src="https://search.pstatic.net/common/?src=http%3A%2F%2Fblogfiles.naver.net%2FMjAyNDEyMDRfMjAy%2FMDAxNzMzMzEwNzA0MDQ0.o6whEPD2Eufi0TLTRBDjorxTnNhnYLkqh_iPVVB_Snsg.lk7cwR8as9m1Y1J9djSBRIDzzYEOPciYQIRFsuLqvUEg.PNG%2Fimage.png&type=sc960_832"
-      />{' '}
+      />
       <img
         className={styles.image}
         src="https://search.pstatic.net/sunny/?src=https%3A%2F%2Fi.pinimg.com%2F474x%2Ffe%2Ff7%2Fd8%2Ffef7d8c6fe9d5050454db49855d38b08.jpg&type=sc960_832"

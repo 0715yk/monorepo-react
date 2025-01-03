@@ -7,29 +7,19 @@ export default function Header() {
   const [theme, setTheme] = useState<'light' | 'dark' | null>(null);
 
   useEffect(() => {
-    // localStorage에서 테마 값 가져오기
-    const savedTheme = localStorage.getItem('theme') as 'light' | 'dark' | null;
-    if (savedTheme) {
-      setTheme(savedTheme);
-      document.documentElement.setAttribute('data-theme', savedTheme);
-    } else {
-      // prefers-color-scheme 값 확인
-      const prefersDark = window.matchMedia(
-        '(prefers-color-scheme: dark)'
-      ).matches;
-      const initialTheme: 'light' | 'dark' = prefersDark ? 'dark' : 'light';
-      setTheme(initialTheme);
-      document.documentElement.setAttribute('data-theme', initialTheme);
-    }
+    const currentTheme = document.documentElement.getAttribute('data-theme');
+
+    setTheme(currentTheme as 'light' | 'dark');
   }, []);
 
   const toggleTheme = (): void => {
     if (!theme) return; // 초기화되지 않았다면 아무 작업도 하지 않음
 
     const newTheme: 'light' | 'dark' = theme === 'dark' ? 'light' : 'dark';
+
     setTheme(newTheme);
-    localStorage.setItem('theme', newTheme);
     document.documentElement.setAttribute('data-theme', newTheme);
+    document.cookie = `theme=${newTheme}; path=/; max-age=31536000;`;
   };
 
   return (
