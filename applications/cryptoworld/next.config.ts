@@ -36,6 +36,9 @@ const nextConfig: NextConfig = {
     });
     return config;
   }
+  // experimental: {
+  //   externalDir: true // 외부 디렉토리 접근 허용
+  // }
 };
 
 export default nextConfig;
