@@ -1,5 +1,5 @@
 import styles from "./FlexContainer.module.scss";
-import React, { CSSProperties, ReactNode } from "react";
+import { CSSProperties, ReactNode } from "react";
 
 interface FlexContainerProps {
   children: ReactNode;
@@ -10,6 +10,7 @@ interface FlexContainerProps {
   width?: string;
   height?: string;
   style?: CSSProperties;
+  className?: string;
 }
 
 export const FlexContainer = ({
@@ -21,6 +22,7 @@ export const FlexContainer = ({
   height,
   width,
   style,
+  className,
 }: FlexContainerProps) => {
   const dynamicStyles: CSSProperties = {
     ...style,
@@ -33,7 +35,7 @@ export const FlexContainer = ({
   };
 
   return (
-    <div className={styles.container} style={dynamicStyles}>
+    <div className={`${className} ${styles.container}`} style={dynamicStyles}>
       {children}
     </div>
   );

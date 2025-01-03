@@ -1,7 +1,6 @@
 /* page.module.css */
 .backgroundContainer {
   position: relative;
-  background-image: url('https://encrypted-tbn0.gstatic.com/images?q=tbn:ANd9GcT8FA5rY4ywmFpP-ITvXhRFshVRqHmCIG6LiA&s');
   background-size: cover;
   background-position: center;
 }
@@ -29,4 +28,5 @@
   height: 200px;
   object-fit: cover;
   border-radius: 16px;
+  cursor: pointer;
 }

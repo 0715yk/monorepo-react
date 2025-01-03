@@ -3,6 +3,7 @@ import localFont from 'next/font/local';
 import Header from '../components/Header/Header';
 import { cookies } from 'next/headers';
 
+import './global.css';
 import '@myorg/assets/scss/variable.scss';
 import '@myorg/assets/scss/reset.scss';
 

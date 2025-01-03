@@ -1,0 +1,4 @@
+body {
+  @include text-style-body-m-14-r;
+  min-width: 1140px;
+}

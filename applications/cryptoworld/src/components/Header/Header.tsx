@@ -2,6 +2,8 @@
 
 import { useEffect, useState } from 'react';
 import styles from './Header.module.scss';
+import { FlexContainer } from '@myorg/ui/components';
+import BookIcon from '@myorg/assets/svg/Icon/bookmark.svg';
 
 export default function Header() {
   const [theme, setTheme] = useState<'light' | 'dark' | null>(null);
@@ -24,31 +26,23 @@ export default function Header() {
 
   return (
     <header className={styles.header}>
-      <div className={styles.container}>
-        <div className={styles.logo}>
-          <img src="path-to-logo.png" alt="OpenSea Logo" />
-        </div>
-        <nav className={styles.nav}>
-          <ul>
-            <li>
-              <a href="#">Drops</a>
-            </li>
-            <li>
-              <a href="#">Stats</a>
-            </li>
-            <li>
-              <a href="#">Create</a>
-            </li>
-          </ul>
-        </nav>
-        <div className={styles.actions}>
-          <button className={styles.wallet}>Wallet</button>
+      <FlexContainer
+        className={styles.container}
+        height="60px"
+        justifyContent="space-between"
+      >
+        <FlexContainer className={styles.logo} gap={5} width="150px">
+          <BookIcon width={24} height={24} />
+          <span>MyLyrics</span>
+        </FlexContainer>
+        <FlexContainer className={styles.actions} gap={10} width="350px">
+          <button className={styles.create}>Create</button>
           <button className={styles.login}>Login</button>
-          <button onClick={toggleTheme} className={styles.button}>
-            Switch to {theme === 'dark' ? 'Light' : 'Dark'} Mode
+          <button onClick={toggleTheme}>
+            {theme === 'light' ? '🌙' : '☀️'}
           </button>
-        </div>
-      </div>
+        </FlexContainer>
+      </FlexContainer>
     </header>
   );
 }

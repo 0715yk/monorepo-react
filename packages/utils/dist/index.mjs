@@ -633,9 +633,9 @@ var require_lodash = __commonJS({
         }
         return result;
       }
-      function mapToArray(map) {
-        var index = -1, result = Array(map.size);
-        map.forEach(function(value, key) {
+      function mapToArray(map2) {
+        var index = -1, result = Array(map2.size);
+        map2.forEach(function(value, key) {
           result[++index] = [key, value];
         });
         return result;
@@ -2749,8 +2749,8 @@ var require_lodash = __commonJS({
           result2 = result2 === iteratee ? baseIteratee : result2;
           return arguments.length ? result2(arguments[0], arguments[1]) : result2;
         }
-        function getMapData(map2, key) {
-          var data = map2.__data__;
+        function getMapData(map3, key) {
+          var data = map3.__data__;
           return isKeyable(key) ? data[typeof key == "string" ? "string" : "hash"] : data.map;
         }
         function getMatchData(object) {
@@ -3548,7 +3548,7 @@ var require_lodash = __commonJS({
           iteratee2 = typeof iteratee2 == "function" ? (arrays.pop(), iteratee2) : undefined2;
           return unzipWith(arrays, iteratee2);
         });
-        function chain(value) {
+        function chain2(value) {
           var result2 = lodash(value);
           result2.__chain__ = true;
           return result2;
@@ -3581,7 +3581,7 @@ var require_lodash = __commonJS({
           });
         });
         function wrapperChain() {
-          return chain(this);
+          return chain2(this);
         }
         function wrapperCommit() {
           return new LodashWrapper(this.value(), this.__chain__);
@@ -3654,14 +3654,14 @@ var require_lodash = __commonJS({
         var find = createFind(findIndex);
         var findLast = createFind(findLastIndex);
         function flatMap(collection, iteratee2) {
-          return baseFlatten(map(collection, iteratee2), 1);
+          return baseFlatten(map2(collection, iteratee2), 1);
         }
         function flatMapDeep(collection, iteratee2) {
-          return baseFlatten(map(collection, iteratee2), INFINITY);
+          return baseFlatten(map2(collection, iteratee2), INFINITY);
         }
         function flatMapDepth(collection, iteratee2, depth) {
           depth = depth === undefined2 ? 1 : toInteger(depth);
-          return baseFlatten(map(collection, iteratee2), depth);
+          return baseFlatten(map2(collection, iteratee2), depth);
         }
         function forEach(collection, iteratee2) {
           var func = isArray(collection) ? arrayEach : baseEach;
@@ -3697,7 +3697,7 @@ var require_lodash = __commonJS({
         var keyBy = createAggregator(function(result2, value, key) {
           baseAssignValue(result2, key, value);
         });
-        function map(collection, iteratee2) {
+        function map2(collection, iteratee2) {
           var func = isArray(collection) ? arrayMap : baseMap;
           return func(collection, getIteratee(iteratee2, 3));
         }
@@ -4890,14 +4890,14 @@ var require_lodash = __commonJS({
             object = this;
             methodNames = baseFunctions(source, keys(source));
           }
-          var chain2 = !(isObject(options) && "chain" in options) || !!options.chain, isFunc = isFunction(object);
+          var chain3 = !(isObject(options) && "chain" in options) || !!options.chain, isFunc = isFunction(object);
           arrayEach(methodNames, function(methodName) {
             var func = source[methodName];
             object[methodName] = func;
             if (isFunc) {
               object.prototype[methodName] = function() {
                 var chainAll = this.__chain__;
-                if (chain2 || chainAll) {
+                if (chain3 || chainAll) {
                   var result2 = object(this.__wrapped__), actions = result2.__actions__ = copyArray(this.__actions__);
                   actions.push({ "func": func, "args": arguments, "thisArg": object });
                   result2.__chain__ = chainAll;
@@ -5026,7 +5026,7 @@ var require_lodash = __commonJS({
         lodash.bindAll = bindAll;
         lodash.bindKey = bindKey;
         lodash.castArray = castArray;
-        lodash.chain = chain;
+        lodash.chain = chain2;
         lodash.chunk = chunk;
         lodash.compact = compact;
         lodash.concat = concat;
@@ -5075,7 +5075,7 @@ var require_lodash = __commonJS({
         lodash.keyBy = keyBy;
         lodash.keys = keys;
         lodash.keysIn = keysIn;
-        lodash.map = map;
+        lodash.map = map2;
         lodash.mapKeys = mapKeys;
         lodash.mapValues = mapValues;
         lodash.matches = matches;
@@ -5531,6 +5531,70 @@ var sequence = (...fns) => (x) => {
   return x;
 };
 var fork = (join, fn1, fn2) => (x) => join(fn1(x), fn2(x));
+var Maybe = class _Maybe {
+  static just(a) {
+    return new Just(a);
+  }
+  static nothing() {
+    return new Nothing();
+  }
+  static fromNullable(a) {
+    return a !== null ? _Maybe.just(a) : _Maybe.nothing();
+  }
+  static of(a) {
+    return this.just(a);
+  }
+  get isNothing() {
+    return false;
+  }
+  get isJust() {
+    return false;
+  }
+};
+var Just = class extends Maybe {
+  constructor(value) {
+    super();
+    this._value = value;
+  }
+  get value() {
+    return this._value;
+  }
+  map(f) {
+    return Maybe.fromNullable(f(this._value));
+  }
+  getOrElse() {
+    return this._value;
+  }
+  filter(f) {
+    Maybe.fromNullable(f(this._value) ? this._value : null);
+  }
+  chain(f) {
+    return f(this._value);
+  }
+  toString() {
+    return `Maybe.Just(${this._value})`;
+  }
+};
+var Nothing = class extends Maybe {
+  map(f) {
+    return this;
+  }
+  get value() {
+    throw new TypeError("Nothing \uAC12\uC744 \uAC00\uC838\uC62C \uC218 \uC5C6\uC2B5\uB2C8\uB2E4.");
+  }
+  getOrElse(other) {
+    return other;
+  }
+  filter(f) {
+    return this._value;
+  }
+  chain(f) {
+    return this;
+  }
+  toString() {
+    return `Maybe.Nothing`;
+  }
+};
 var Either = class _Either {
   constructor(value) {
     this._value = value;
@@ -5636,6 +5700,9 @@ var IO = class _IO {
   static of(a) {
     return new _IO(() => a);
   }
+  static lift(fn) {
+    return new _IO(() => fn());
+  }
   static from(fn) {
     return new _IO(fn);
   }
@@ -5651,6 +5718,17 @@ var IO = class _IO {
   }
 };
 var liftIO = (val) => IO.of(val);
+var map = curry((fn, functor) => functor.map(fn));
+var chain = curry((fn, m) => m.chain(fn));
+var trampoline = (fn) => {
+  return function(...args) {
+    let result = fn(...args);
+    while (typeof result === "function") {
+      result = result();
+    }
+    return result;
+  };
+};
 
 // src/constants/validation.ts
 var NICKNAME_LENGTH_ERROR_MESSAGE = "\uB2C9\uB124\uC784\uC740 3\uAE00\uC790 \uC774\uC0C1 15\uAE00\uC790 \uC774\uD558\uB85C \uC785\uB825\uD574\uC8FC\uC138\uC694.";
@@ -5730,13 +5808,17 @@ var checkIntroductionLength = pipe(
 export {
   Either,
   IO,
+  Just,
   Left,
+  Maybe,
+  Nothing,
   Right,
   Tuple,
   alt,
   asyncMap,
   asyncPipe,
   asyncSome,
+  chain,
   checkIntroductionLength,
   checkNicknameCharacter,
   checkNicknameLength,
@@ -5756,11 +5838,13 @@ export {
   isValid,
   isValidIntroduction,
   liftIO,
+  map,
   partial,
   pipe,
   replaceAllBlack,
   sequence,
-  tap
+  tap,
+  trampoline
 };
 /*! Bundled license information:
 
